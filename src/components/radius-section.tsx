@@ -2,22 +2,19 @@
 
 import {
   Badge,
-  Box,
   Button,
   Card,
   Flex,
   Heading,
-  IconButton,
   Select,
-  Slider,
   Text,
 } from '@radix-ui/themes'
-import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
+import { useFieldArray, useFormContext } from 'react-hook-form'
 
 import { buildings } from '@/data/buildings'
 import { type ModConfig } from '@/lib/types'
 
-import { RemoveIcon } from './remove-icon'
+import { TweakCard } from './tweak-card'
 
 const radiusBuildings = buildings.filter((b) => b.category === 'public-service')
 
@@ -61,44 +58,13 @@ export function RadiusSection() {
         </Flex>
 
         {fields.map((field, index) => (
-          <Card key={field.id} variant="surface">
-            <Flex direction="column" gap="3">
-              <Flex align="center" justify="between">
-                <Text size="2" weight="medium">
-                  {field.buildingName}
-                </Text>
-                <IconButton
-                  aria-label={`Remove ${field.buildingName}`}
-                  color="red"
-                  onClick={() => remove(index)}
-                  size="1"
-                  variant="ghost"
-                >
-                  <RemoveIcon />
-                </IconButton>
-              </Flex>
-              <Controller
-                control={control}
-                name={`radiusTweaks.${index}.multiplier`}
-                render={({ field: { onChange, value } }) => (
-                  <Flex align="center" gap="3">
-                    <Box flexGrow="1">
-                      <Slider
-                        max={10}
-                        min={1}
-                        onValueChange={([next]) => onChange(next)}
-                        step={0.5}
-                        value={[value]}
-                      />
-                    </Box>
-                    <Badge size="2" style={{ minWidth: 48 }} variant="surface">
-                      {value}x
-                    </Badge>
-                  </Flex>
-                )}
-              />
-            </Flex>
-          </Card>
+          <TweakCard
+            field={field}
+            index={index}
+            key={field.id}
+            name="radiusTweaks"
+            onRemove={() => remove(index)}
+          />
         ))}
 
         {availableBuildings.length > 0 && (

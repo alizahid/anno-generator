@@ -1,5 +1,6 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
   Box,
   Button,
@@ -18,7 +19,7 @@ import { ModPreview } from '@/components/mod-preview'
 import { ProductivitySection } from '@/components/productivity-section'
 import { RadiusSection } from '@/components/radius-section'
 import { generateModZip } from '@/lib/generate-zip'
-import { type ModConfig } from '@/lib/types'
+import { type ModConfig, modConfigSchema } from '@/lib/types'
 
 export default function Home() {
   const form = useForm<ModConfig>({
@@ -29,6 +30,7 @@ export default function Home() {
       radiusTweaks: [],
       removeTransferTime: false,
     },
+    resolver: zodResolver(modConfigSchema),
   })
 
   const { isDirty, isSubmitting } = form.formState

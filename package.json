@@ -10,13 +10,15 @@
     "format": "bunx ultracite fix"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/themes": "^3.3.0",
     "jszip": "^3.10.1",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.2",
-    "xmlbuilder2": "^4.0.3"
+    "xmlbuilder2": "^4.0.3",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",

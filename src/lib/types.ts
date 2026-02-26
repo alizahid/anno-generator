@@ -1,6 +1,8 @@
+import { z } from 'zod'
+
 // ── Shared enums and types ───────────────────────────────────────────
 
-export type Region = 'old-world' | 'new-world' | 'arctic' | 'enbesa'
+export type Region = 'arctic' | 'enbesa' | 'new-world' | 'old-world'
 
 export const regions: Record<Region, string> = {
   arctic: 'Arctic',
@@ -56,22 +58,19 @@ export type Fertility = {
 
 // ── Mod config (form state) ──────────────────────────────────────────
 
-export type ProductivityTweak = {
-  buildingGuid: number
-  buildingName: string
-  multiplier: number
-}
+export const tweakSchema = z.object({
+  buildingGuid: z.number(),
+  buildingName: z.string(),
+  multiplier: z.number().min(1).max(10),
+})
 
-export type RadiusTweak = {
-  buildingGuid: number
-  buildingName: string
-  multiplier: number
-}
+export const modConfigSchema = z.object({
+  enableAllFertilities: z.boolean(),
+  modName: z.string().min(1),
+  productivityTweaks: z.array(tweakSchema),
+  radiusTweaks: z.array(tweakSchema),
+  removeTransferTime: z.boolean(),
+})
 
-export type ModConfig = {
-  enableAllFertilities: boolean
-  modName: string
-  productivityTweaks: Array<ProductivityTweak>
-  radiusTweaks: Array<RadiusTweak>
-  removeTransferTime: boolean
-}
+export type Tweak = z.infer<typeof tweakSchema>
+export type ModConfig = z.infer<typeof modConfigSchema>
