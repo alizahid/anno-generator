@@ -1,6 +1,7 @@
 import { type Building } from '@/lib/types'
 
 // GUIDs sourced from Incipium's Anno 1800 Modding Reference
+// Icons sourced from jansepke/anno-toolkit (extracted game assets)
 
 // ── Old World ────────────────────────────────────────────────────────
 
@@ -8,6 +9,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_265,
+    icon: '/buildings/potatoes.png',
     name: 'Potato Farm',
     region: 'old-world',
     tier: 'Farmers',
@@ -15,6 +17,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_262,
+    icon: '/buildings/grain.png',
     name: 'Grain Farm',
     region: 'old-world',
     tier: 'Farmers',
@@ -22,6 +25,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_267,
+    icon: '/buildings/wool.png',
     name: 'Sheep Farm',
     region: 'old-world',
     tier: 'Farmers',
@@ -29,6 +33,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_264,
+    icon: '/buildings/hops.png',
     name: 'Hop Farm',
     region: 'old-world',
     tier: 'Workers',
@@ -36,6 +41,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 100_654,
+    icon: '/buildings/pepper.png',
     name: 'Red Pepper Farm',
     region: 'old-world',
     tier: 'Artisans',
@@ -43,6 +49,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_269,
+    icon: '/buildings/pigs.png',
     name: 'Pig Farm',
     region: 'old-world',
     tier: 'Workers',
@@ -50,6 +57,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_263,
+    icon: '/buildings/cattle.png',
     name: 'Cattle Farm',
     region: 'old-world',
     tier: 'Workers',
@@ -57,6 +65,7 @@ const oldWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 100_655,
+    icon: '/buildings/grapes.png',
     name: 'Vineyard',
     region: 'old-world',
     tier: 'Engineers',
@@ -67,6 +76,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_266,
+    icon: '/buildings/wood.png',
     name: "Lumberjack's Hut",
     region: 'old-world',
     tier: 'Farmers',
@@ -74,6 +84,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 100_451,
+    icon: '/buildings/planks.png',
     name: 'Sawmill',
     region: 'old-world',
     tier: 'Farmers',
@@ -81,6 +92,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_558,
+    icon: '/buildings/fur.png',
     name: 'Hunting Cabin',
     region: 'old-world',
     tier: 'Farmers',
@@ -88,6 +100,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_559,
+    icon: '/buildings/fish.png',
     name: 'Fishery',
     region: 'old-world',
     tier: 'Farmers',
@@ -95,6 +108,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_294,
+    icon: '/buildings/schnapps.png',
     name: 'Schnapps Distillery',
     region: 'old-world',
     tier: 'Farmers',
@@ -102,6 +116,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_313,
+    icon: '/buildings/flour.png',
     name: 'Flour Mill',
     region: 'old-world',
     tier: 'Farmers',
@@ -109,6 +124,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_291,
+    icon: '/buildings/bread.png',
     name: 'Bakery',
     region: 'old-world',
     tier: 'Workers',
@@ -116,6 +132,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_315,
+    icon: '/buildings/working-clothes.png',
     name: 'Framework Knitters',
     region: 'old-world',
     tier: 'Workers',
@@ -123,6 +140,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_292,
+    icon: '/buildings/beer.png',
     name: 'Brewery',
     region: 'old-world',
     tier: 'Workers',
@@ -130,6 +148,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_312,
+    icon: '/buildings/tallow.png',
     name: 'Rendering Works',
     region: 'old-world',
     tier: 'Workers',
@@ -137,6 +156,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_281,
+    icon: '/buildings/soap.png',
     name: 'Soap Factory',
     region: 'old-world',
     tier: 'Workers',
@@ -144,6 +164,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_316,
+    icon: '/buildings/sausages.png',
     name: 'Slaughterhouse',
     region: 'old-world',
     tier: 'Workers',
@@ -151,6 +172,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_295,
+    icon: '/buildings/canned-food.png',
     name: 'Cannery',
     region: 'old-world',
     tier: 'Artisans',
@@ -158,6 +180,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_284,
+    icon: '/buildings/sewing-machines.png',
     name: 'Sewing Machine Factory',
     region: 'old-world',
     tier: 'Artisans',
@@ -165,6 +188,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_325,
+    icon: '/buildings/fur-coats.png',
     name: 'Fur Dealer',
     region: 'old-world',
     tier: 'Artisans',
@@ -172,6 +196,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_293,
+    icon: '/buildings/goulash.png',
     name: 'Artisanal Kitchen',
     region: 'old-world',
     tier: 'Artisans',
@@ -179,6 +204,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_285,
+    icon: '/buildings/windows.png',
     name: 'Window Factory',
     region: 'old-world',
     tier: 'Artisans',
@@ -186,6 +212,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 101_250,
+    icon: '/buildings/glasses.png',
     name: 'Spectacle Factory',
     region: 'old-world',
     tier: 'Engineers',
@@ -193,6 +220,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_323,
+    icon: '/buildings/bicycles.png',
     name: 'Bicycle Factory',
     region: 'old-world',
     tier: 'Engineers',
@@ -200,6 +228,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 100_659,
+    icon: '/buildings/champagne.png',
     name: 'Champagne Cellar',
     region: 'old-world',
     tier: 'Engineers',
@@ -207,6 +236,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_324,
+    icon: '/buildings/pocket-watches.png',
     name: 'Clockmakers',
     region: 'old-world',
     tier: 'Engineers',
@@ -214,6 +244,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_286,
+    icon: '/buildings/light-bulbs.png',
     name: 'Light Bulb Factory',
     region: 'old-world',
     tier: 'Engineers',
@@ -221,6 +252,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_300,
+    icon: '/buildings/dynamite.png',
     name: 'Dynamite Factory',
     region: 'old-world',
     tier: 'Engineers',
@@ -228,6 +260,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_320,
+    icon: '/buildings/inlay.png',
     name: 'Marquetry Workshop',
     region: 'old-world',
     tier: 'Investors',
@@ -235,6 +268,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_326,
+    icon: '/buildings/phonographs.png',
     name: 'Gramophone Factory',
     region: 'old-world',
     tier: 'Investors',
@@ -242,6 +276,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_328,
+    icon: '/buildings/jewelry.png',
     name: 'Jewellers',
     region: 'old-world',
     tier: 'Investors',
@@ -249,6 +284,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_289,
+    icon: '/buildings/steam-carriages.png',
     name: 'Coachmakers',
     region: 'old-world',
     tier: 'Investors',
@@ -256,6 +292,7 @@ const oldWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_303,
+    icon: '/buildings/steam-motors.png',
     name: 'Cab Assembly Line',
     region: 'old-world',
     tier: 'Investors',
@@ -266,6 +303,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_298,
+    icon: '/buildings/charcoal.png',
     name: 'Charcoal Kiln',
     region: 'old-world',
     tier: 'Farmers',
@@ -273,6 +311,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_288,
+    icon: '/buildings/sails.png',
     name: 'Sailmakers',
     region: 'old-world',
     tier: 'Farmers',
@@ -280,6 +319,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_305,
+    icon: '/buildings/iron-ore.png',
     name: 'Iron Mine',
     region: 'old-world',
     tier: 'Workers',
@@ -287,6 +327,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_304,
+    icon: '/buildings/coal.png',
     name: 'Coal Mine',
     region: 'old-world',
     tier: 'Workers',
@@ -294,6 +335,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_297,
+    icon: '/buildings/iron.png',
     name: 'Furnace',
     region: 'old-world',
     tier: 'Workers',
@@ -301,6 +343,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_296,
+    icon: '/buildings/steel.png',
     name: 'Steelworks',
     region: 'old-world',
     tier: 'Workers',
@@ -308,6 +351,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_299,
+    icon: '/buildings/weapons.png',
     name: 'Weapons Factory',
     region: 'old-world',
     tier: 'Workers',
@@ -315,6 +359,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 100_416,
+    icon: '/buildings/clay.png',
     name: 'Clay Pit',
     region: 'old-world',
     tier: 'Workers',
@@ -322,6 +367,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_283,
+    icon: '/buildings/bricks.png',
     name: 'Brick Factory',
     region: 'old-world',
     tier: 'Workers',
@@ -329,6 +375,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_314,
+    icon: '/buildings/malt.png',
     name: 'Malthouse',
     region: 'old-world',
     tier: 'Workers',
@@ -336,6 +383,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_307,
+    icon: '/buildings/zinc.png',
     name: 'Zinc Mine',
     region: 'old-world',
     tier: 'Artisans',
@@ -343,6 +391,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_308,
+    icon: '/buildings/copper.png',
     name: 'Copper Mine',
     region: 'old-world',
     tier: 'Artisans',
@@ -350,6 +399,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_282,
+    icon: '/buildings/brass.png',
     name: 'Brass Smeltery',
     region: 'old-world',
     tier: 'Artisans',
@@ -357,6 +407,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_318,
+    icon: '/buildings/cloth.png',
     name: 'Cotton Mill',
     region: 'old-world',
     tier: 'Artisans',
@@ -364,6 +415,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_317,
+    icon: '/buildings/sugar.png',
     name: 'Sugar Refinery',
     region: 'old-world',
     tier: 'Artisans',
@@ -371,6 +423,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_311,
+    icon: '/buildings/gold-ore.png',
     name: 'Gold Ore Mine',
     region: 'old-world',
     tier: 'Engineers',
@@ -378,6 +431,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_560,
+    icon: '/buildings/quartz-sand.png',
     name: 'Sand Mine',
     region: 'old-world',
     tier: 'Engineers',
@@ -385,6 +439,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_319,
+    icon: '/buildings/glass.png',
     name: 'Glassmakers',
     region: 'old-world',
     tier: 'Engineers',
@@ -392,6 +447,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_309,
+    icon: '/buildings/cement.png',
     name: 'Limestone Quarry',
     region: 'old-world',
     tier: 'Engineers',
@@ -399,6 +455,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_280,
+    icon: '/buildings/concrete.png',
     name: 'Concrete Factory',
     region: 'old-world',
     tier: 'Engineers',
@@ -406,6 +463,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_310,
+    icon: '/buildings/niter.png',
     name: 'Saltpeter Works',
     region: 'old-world',
     tier: 'Engineers',
@@ -413,6 +471,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_321,
+    icon: '/buildings/carbon-filament.png',
     name: 'Filament Factory',
     region: 'old-world',
     tier: 'Engineers',
@@ -420,6 +479,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_302,
+    icon: '/buildings/steam-motors.png',
     name: 'Motor Assembly Line',
     region: 'old-world',
     tier: 'Engineers',
@@ -427,6 +487,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_301,
+    icon: '/buildings/advanced-weaponry.png',
     name: 'Heavy Weapons Factory',
     region: 'old-world',
     tier: 'Engineers',
@@ -434,6 +495,7 @@ const oldWorldHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 1_010_327,
+    icon: '/buildings/gold.png',
     name: 'Goldsmiths',
     region: 'old-world',
     tier: 'Investors',
@@ -444,6 +506,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_372,
+    icon: '/buildings/marketplace.png',
     name: 'Marketplace',
     region: 'old-world',
     tier: 'Farmers',
@@ -451,6 +514,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_358,
+    icon: '/buildings/pub.png',
     name: 'Pub',
     region: 'old-world',
     tier: 'Farmers',
@@ -458,6 +522,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_463,
+    icon: '/buildings/fire-station.png',
     name: 'Fire Station',
     region: 'old-world',
     tier: 'Farmers',
@@ -465,6 +530,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_359,
+    icon: '/buildings/church.png',
     name: 'Church',
     region: 'old-world',
     tier: 'Workers',
@@ -472,6 +538,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_360,
+    icon: '/buildings/school.png',
     name: 'School',
     region: 'old-world',
     tier: 'Workers',
@@ -479,6 +546,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_462,
+    icon: '/buildings/police.png',
     name: 'Police Station',
     region: 'old-world',
     tier: 'Workers',
@@ -486,6 +554,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_361,
+    icon: '/buildings/variety-theatre.png',
     name: 'Variety Theatre',
     region: 'old-world',
     tier: 'Artisans',
@@ -493,6 +562,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_464,
+    icon: '/buildings/hospital.png',
     name: 'Hospital',
     region: 'old-world',
     tier: 'Artisans',
@@ -500,6 +570,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_362,
+    icon: '/buildings/university.png',
     name: 'University',
     region: 'old-world',
     tier: 'Engineers',
@@ -507,6 +578,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_365,
+    icon: '/buildings/bank.png',
     name: 'Bank',
     region: 'old-world',
     tier: 'Investors',
@@ -514,6 +586,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_364,
+    icon: '/buildings/members-club.png',
     name: 'Members Club',
     region: 'old-world',
     tier: 'Investors',
@@ -526,6 +599,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_329,
+    icon: '/buildings/cane-sugar.png',
     name: 'Sugar Cane Plantation',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -533,6 +607,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_331,
+    icon: '/buildings/cotton.png',
     name: 'Cotton Plantation',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -540,6 +615,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 101_263,
+    icon: '/buildings/plantains.png',
     name: 'Plantain Plantation',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -547,6 +623,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 101_270,
+    icon: '/buildings/corn.png',
     name: 'Corn Farm',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -554,6 +631,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_333,
+    icon: '/buildings/caoutchouc.png',
     name: 'Caoutchouc Plantation',
     region: 'new-world',
     tier: 'Obreros',
@@ -561,6 +639,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_330,
+    icon: '/buildings/tobacco.png',
     name: 'Tobacco Plantation',
     region: 'new-world',
     tier: 'Obreros',
@@ -568,6 +647,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 101_251,
+    icon: '/buildings/coffee-beans.png',
     name: 'Coffee Plantation',
     region: 'new-world',
     tier: 'Obreros',
@@ -575,6 +655,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 1_010_332,
+    icon: '/buildings/cocoa.png',
     name: 'Cocoa Plantation',
     region: 'new-world',
     tier: 'Obreros',
@@ -582,6 +663,7 @@ const newWorldFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 101_272,
+    icon: '/buildings/alpaca-wool.png',
     name: 'Alpaca Farm',
     region: 'new-world',
     tier: 'Obreros',
@@ -592,6 +674,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_340,
+    icon: '/buildings/rum.png',
     name: 'Rum Distillery',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -599,6 +682,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 101_264,
+    icon: '/buildings/fried-plantains.png',
     name: 'Fried Plantain Kitchen',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -606,6 +690,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 101_266,
+    icon: '/buildings/poncho.png',
     name: 'Poncho Darner',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -613,6 +698,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 101_271,
+    icon: '/buildings/tortilla.png',
     name: 'Tortilla Maker',
     region: 'new-world',
     tier: 'Obreros',
@@ -620,6 +706,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 101_252,
+    icon: '/buildings/coffee.png',
     name: 'Coffee Roaster',
     region: 'new-world',
     tier: 'Obreros',
@@ -627,6 +714,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 101_415,
+    icon: '/buildings/felt.png',
     name: 'Felt Producer',
     region: 'new-world',
     tier: 'Obreros',
@@ -634,6 +722,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 101_273,
+    icon: '/buildings/bowler-hat.png',
     name: 'Bombín Weaver',
     region: 'new-world',
     tier: 'Obreros',
@@ -641,6 +730,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_342,
+    icon: '/buildings/cigars.png',
     name: 'Cigar Factory',
     region: 'new-world',
     tier: 'Obreros',
@@ -648,6 +738,7 @@ const newWorldProduction: Array<Building> = [
   {
     category: 'production',
     guid: 1_010_341,
+    icon: '/buildings/chocolate.png',
     name: 'Chocolate Factory',
     region: 'new-world',
     tier: 'Obreros',
@@ -658,6 +749,7 @@ const newWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 101_257,
+    icon: '/buildings/marketplace.png',
     name: 'Marketplace',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -665,6 +757,7 @@ const newWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 101_258,
+    icon: '/buildings/church.png',
     name: 'Chapel',
     region: 'new-world',
     tier: 'Jornaleros',
@@ -672,6 +765,7 @@ const newWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 101_259,
+    icon: '/buildings/boxing-arena.png',
     name: 'Boxing Arena',
     region: 'new-world',
     tier: 'Obreros',
@@ -684,6 +778,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_655,
+    icon: '/buildings/sled-frame.png',
     name: 'Husky Sled Frame Factory',
     region: 'arctic',
     tier: 'Explorers',
@@ -691,6 +786,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_656,
+    icon: '/buildings/sleeping-bags.png',
     name: 'Sleeping Bag Factory',
     region: 'arctic',
     tier: 'Explorers',
@@ -698,6 +794,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_657,
+    icon: '/buildings/oil-lamps.png',
     name: 'Oil Lamp Factory',
     region: 'arctic',
     tier: 'Explorers',
@@ -705,6 +802,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_658,
+    icon: '/buildings/pemmican.png',
     name: 'Pemmican Cookhouse',
     region: 'arctic',
     tier: 'Explorers',
@@ -712,6 +810,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_659,
+    icon: '/buildings/goose-feathers.png',
     name: 'Goose Farm',
     region: 'arctic',
     tier: 'Technicians',
@@ -719,6 +818,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_660,
+    icon: '/buildings/parka.png',
     name: 'Parka Factory',
     region: 'arctic',
     tier: 'Technicians',
@@ -726,6 +826,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_661,
+    icon: '/buildings/caribou-meat.png',
     name: 'Caribou Hunting Cabin',
     region: 'arctic',
     tier: 'Explorers',
@@ -733,6 +834,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_662,
+    icon: '/buildings/bear-fur.png',
     name: 'Bear Hunting Cabin',
     region: 'arctic',
     tier: 'Explorers',
@@ -740,6 +842,7 @@ const arcticProduction: Array<Building> = [
   {
     category: 'production',
     guid: 112_663,
+    icon: '/buildings/whale-oil.png',
     name: 'Whale Oil Refinery',
     region: 'arctic',
     tier: 'Explorers',
@@ -750,6 +853,7 @@ const arcticHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 112_664,
+    icon: '/buildings/gas.png',
     name: 'Gas Mine',
     region: 'arctic',
     tier: 'Technicians',
@@ -757,6 +861,7 @@ const arcticHeavyIndustry: Array<Building> = [
   {
     category: 'heavy-industry',
     guid: 112_665,
+    icon: '/buildings/gold.png',
     name: 'Gold Washing Plant',
     region: 'arctic',
     tier: 'Technicians',
@@ -767,6 +872,7 @@ const arcticPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 112_671,
+    icon: '/buildings/ranger-station.png',
     name: 'Ranger Station',
     region: 'arctic',
     tier: 'Explorers',
@@ -774,6 +880,7 @@ const arcticPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 112_672,
+    icon: '/buildings/canteen.png',
     name: 'Canteen',
     region: 'arctic',
     tier: 'Explorers',
@@ -781,6 +888,7 @@ const arcticPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 112_673,
+    icon: '/buildings/post-office.png',
     name: 'Post Office',
     region: 'arctic',
     tier: 'Technicians',
@@ -793,6 +901,7 @@ const enbesaFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 114_750,
+    icon: '/buildings/teff.png',
     name: 'Teff Farm',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -800,6 +909,7 @@ const enbesaFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 114_751,
+    icon: '/buildings/spices.png',
     name: 'Spice Farm',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -807,6 +917,7 @@ const enbesaFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 114_752,
+    icon: '/buildings/hibiscus.png',
     name: 'Hibiscus Farm',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -814,6 +925,7 @@ const enbesaFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 114_753,
+    icon: '/buildings/indigo.png',
     name: 'Indigo Farm',
     region: 'enbesa',
     tier: 'Elders',
@@ -821,6 +933,7 @@ const enbesaFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 114_754,
+    icon: '/buildings/cotton.png',
     name: 'Cotton Farm',
     region: 'enbesa',
     tier: 'Elders',
@@ -831,6 +944,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_755,
+    icon: '/buildings/wanza-wood.png',
     name: 'Wanza Woodcutter',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -838,6 +952,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_756,
+    icon: '/buildings/goat-milk.png',
     name: 'Goat Farm',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -845,6 +960,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_757,
+    icon: '/buildings/clay.png',
     name: 'Clay Collector',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -852,6 +968,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_758,
+    icon: '/buildings/ceramics.png',
     name: 'Pottery Workshop',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -859,6 +976,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_759,
+    icon: '/buildings/linseed.png',
     name: 'Linseed Farm',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -866,6 +984,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_760,
+    icon: '/buildings/tapestries.png',
     name: 'Tapestry Loom',
     region: 'enbesa',
     tier: 'Elders',
@@ -873,6 +992,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_761,
+    icon: '/buildings/scriptures.png',
     name: 'Scriptorium',
     region: 'enbesa',
     tier: 'Elders',
@@ -880,6 +1000,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_762,
+    icon: '/buildings/seafood.png',
     name: 'Seafood Stew Kitchen',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -887,6 +1008,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_763,
+    icon: '/buildings/leather.png',
     name: 'Leather Workshop',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -894,6 +1016,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_764,
+    icon: '/buildings/teff-flour.png',
     name: 'Flour Mill',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -901,6 +1024,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_765,
+    icon: '/buildings/injera.png',
     name: 'Injera Maker',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -911,6 +1035,7 @@ const enbesaPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 114_770,
+    icon: '/buildings/mosque.png',
     name: 'Shepherd Mosque',
     region: 'enbesa',
     tier: 'Shepherds',
@@ -918,6 +1043,7 @@ const enbesaPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 114_771,
+    icon: '/buildings/mosque.png',
     name: 'Elder Mosque',
     region: 'enbesa',
     tier: 'Elders',
@@ -925,6 +1051,7 @@ const enbesaPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 114_772,
+    icon: '/buildings/marketplace.png',
     name: 'Marketplace',
     region: 'enbesa',
     tier: 'Shepherds',

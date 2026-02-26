@@ -9,14 +9,17 @@ import {
   Text,
   TextField,
 } from '@radix-ui/themes'
+import Image from 'next/image'
 import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 
 import {
   type Building,
   type ModConfig,
+  type PopulationTier,
   type Region,
   regions,
+  tierIcons,
 } from '@/lib/types'
 
 const regionOrder: Array<Region> = [
@@ -24,6 +27,21 @@ const regionOrder: Array<Region> = [
   'new-world',
   'arctic',
   'enbesa',
+]
+
+const tierOrder: Array<PopulationTier> = [
+  'Farmers',
+  'Workers',
+  'Artisans',
+  'Engineers',
+  'Investors',
+  'Jornaleros',
+  'Obreros',
+  'Explorers',
+  'Technicians',
+  'Shepherds',
+  'Elders',
+  'Scholars',
 ]
 
 type Props = {
@@ -99,44 +117,84 @@ export function BuildingTable({
             return null
           }
 
+          const tiers = tierOrder.filter((tier) =>
+            regionBuildings.some((b) => b.tier === tier),
+          )
+
           return (
-            <Flex direction="column" gap="1" key={region}>
-              <Text color="gray" size="1" weight="bold">
+            <Flex direction="column" gap="3" key={region}>
+              <Text color="gray" size="2" weight="bold">
                 {regions[region]}
               </Text>
-              <Table.Root size="1" variant="surface">
-                <Table.Body>
-                  {regionBuildings.map((building) => (
-                    <Table.Row key={building.guid}>
-                      <Table.RowHeaderCell>
-                        <Text size="2">{building.name}</Text>
-                      </Table.RowHeaderCell>
-                      <Table.Cell align="right" width="80px">
-                        <Controller
-                          control={control}
-                          name={`${fieldName}.${building.guid}`}
-                          render={({ field: { onChange, value } }) => (
-                            <TextField.Root
-                              max="10"
-                              min="1"
-                              onChange={(event) => {
-                                const v = event.target.value
-                                onChange(v === '' ? undefined : Number(v))
-                              }}
-                              placeholder="—"
-                              size="1"
-                              step="0.5"
-                              style={{ width: 64 }}
-                              type="number"
-                              value={value ?? ''}
-                            />
-                          )}
-                        />
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-              </Table.Root>
+
+              {tiers.map((tier) => {
+                const tierBuildings = regionBuildings.filter(
+                  (b) => b.tier === tier,
+                )
+
+                if (tierBuildings.length === 0) {
+                  return null
+                }
+
+                return (
+                  <Flex direction="column" gap="1" key={`${region}-${tier}`}>
+                    <Flex align="center" gap="1">
+                      <Image
+                        alt={tier}
+                        height={18}
+                        src={tierIcons[tier]}
+                        width={18}
+                      />
+                      <Text color="gray" size="1" weight="medium">
+                        {tier}
+                      </Text>
+                    </Flex>
+
+                    <Table.Root size="1" variant="surface">
+                      <Table.Body>
+                        {tierBuildings.map((building) => (
+                          <Table.Row key={building.guid}>
+                            <Table.RowHeaderCell>
+                              <Flex align="center" gap="2">
+                                <Image
+                                  alt={building.name}
+                                  height={20}
+                                  src={building.icon}
+                                  style={{ flexShrink: 0 }}
+                                  width={20}
+                                />
+                                <Text size="2">{building.name}</Text>
+                              </Flex>
+                            </Table.RowHeaderCell>
+                            <Table.Cell align="right" width="80px">
+                              <Controller
+                                control={control}
+                                name={`${fieldName}.${building.guid}`}
+                                render={({ field: { onChange, value } }) => (
+                                  <TextField.Root
+                                    max="10"
+                                    min="1"
+                                    onChange={(event) => {
+                                      const v = event.target.value
+                                      onChange(v === '' ? undefined : Number(v))
+                                    }}
+                                    placeholder="—"
+                                    size="1"
+                                    step="0.5"
+                                    style={{ width: 64 }}
+                                    type="number"
+                                    value={value ?? ''}
+                                  />
+                                )}
+                              />
+                            </Table.Cell>
+                          </Table.Row>
+                        ))}
+                      </Table.Body>
+                    </Table.Root>
+                  </Flex>
+                )
+              })}
             </Flex>
           )
         })}

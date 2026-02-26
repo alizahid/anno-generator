@@ -43,9 +43,25 @@ export const buildingCategories: Record<BuildingCategory, string> = {
 export type Building = {
   category: BuildingCategory
   guid: number
+  icon: string
   name: string
   region: Region
   tier: PopulationTier
+}
+
+export const tierIcons: Record<PopulationTier, string> = {
+  Artisans: '/tiers/artisans.png',
+  Elders: '/tiers/elders.png',
+  Engineers: '/tiers/engineers.png',
+  Explorers: '/tiers/explorers.png',
+  Farmers: '/tiers/farmers.png',
+  Investors: '/tiers/investors.png',
+  Jornaleros: '/tiers/jornaleros.png',
+  Obreros: '/tiers/obreros.png',
+  Scholars: '/tiers/scholars.png',
+  Shepherds: '/tiers/shepherds.png',
+  Technicians: '/tiers/technicians.png',
+  Workers: '/tiers/workers.png',
 }
 
 // ── Fertility data ───────────────────────────────────────────────────
