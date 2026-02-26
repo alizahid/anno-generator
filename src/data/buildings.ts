@@ -70,6 +70,14 @@ const oldWorldFarms: Array<Building> = [
     region: 'old-world',
     tier: 'Engineers',
   },
+  {
+    category: 'farm',
+    guid: 101_331,
+    icon: '/buildings/oil.png',
+    name: 'Oil Refinery',
+    region: 'old-world',
+    tier: 'Engineers',
+  },
 ]
 
 const oldWorldProduction: Array<Building> = [
@@ -297,6 +305,62 @@ const oldWorldProduction: Array<Building> = [
     region: 'old-world',
     tier: 'Investors',
   },
+  {
+    category: 'production',
+    guid: 118_733,
+    icon: '/buildings/leather-boots.png',
+    name: 'Bootmakers',
+    region: 'old-world',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 118_734,
+    icon: '/buildings/tailored-suits.png',
+    name: "Tailor's Shop",
+    region: 'old-world',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 118_735,
+    icon: '/buildings/telephones.png',
+    name: 'Telephone Manufacturer',
+    region: 'old-world',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 118_571,
+    icon: '/buildings/gasoline.png',
+    name: 'Fuel Station',
+    region: 'old-world',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 124_737,
+    icon: '/buildings/rum.png',
+    name: 'Advanced Rum Distillery',
+    region: 'old-world',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 124_738,
+    icon: '/buildings/coffee.png',
+    name: 'Advanced Coffee Roaster',
+    region: 'old-world',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 124_739,
+    icon: '/buildings/cloth.png',
+    name: 'Advanced Cotton Mill',
+    region: 'old-world',
+    tier: 'Scholars',
+  },
 ]
 
 const oldWorldHeavyIndustry: Array<Building> = [
@@ -500,6 +564,14 @@ const oldWorldHeavyIndustry: Array<Building> = [
     region: 'old-world',
     tier: 'Investors',
   },
+  {
+    category: 'heavy-industry',
+    guid: 100_780,
+    icon: '/buildings/power-plant.png',
+    name: 'Oil Power Plant',
+    region: 'old-world',
+    tier: 'Engineers',
+  },
 ]
 
 const oldWorldPublicServices: Array<Building> = [
@@ -590,6 +662,14 @@ const oldWorldPublicServices: Array<Building> = [
     name: 'Members Club',
     region: 'old-world',
     tier: 'Investors',
+  },
+  {
+    category: 'public-service',
+    guid: 118_736,
+    icon: '/buildings/radio-tower.png',
+    name: 'Radio Tower',
+    region: 'old-world',
+    tier: 'Scholars',
   },
 ]
 
@@ -743,6 +823,22 @@ const newWorldProduction: Array<Building> = [
     region: 'new-world',
     tier: 'Obreros',
   },
+  {
+    category: 'production',
+    guid: 1_010_339,
+    icon: '/buildings/pearls.png',
+    name: 'Pearl Farm',
+    region: 'new-world',
+    tier: 'Obreros',
+  },
+  {
+    category: 'production',
+    guid: 101_262,
+    icon: '/buildings/fish-oil.png',
+    name: 'Fish Oil Factory',
+    region: 'new-world',
+    tier: 'Jornaleros',
+  },
 ]
 
 const newWorldPublicServices: Array<Building> = [
@@ -847,6 +943,38 @@ const arcticProduction: Array<Building> = [
     region: 'arctic',
     tier: 'Explorers',
   },
+  {
+    category: 'production',
+    guid: 112_674,
+    icon: '/buildings/seal-skin.png',
+    name: 'Seal Hunter',
+    region: 'arctic',
+    tier: 'Explorers',
+  },
+  {
+    category: 'production',
+    guid: 112_682,
+    icon: '/buildings/husky.png',
+    name: 'Husky Farm',
+    region: 'arctic',
+    tier: 'Explorers',
+  },
+  {
+    category: 'production',
+    guid: 114_703,
+    icon: '/buildings/wood.png',
+    name: "Lumberjack's Hut",
+    region: 'arctic',
+    tier: 'Explorers',
+  },
+  {
+    category: 'production',
+    guid: 114_704,
+    icon: '/buildings/planks.png',
+    name: 'Sawmill',
+    region: 'arctic',
+    tier: 'Explorers',
+  },
 ]
 
 const arcticHeavyIndustry: Array<Building> = [
@@ -863,6 +991,14 @@ const arcticHeavyIndustry: Array<Building> = [
     guid: 112_665,
     icon: '/buildings/gold.png',
     name: 'Gold Washing Plant',
+    region: 'arctic',
+    tier: 'Technicians',
+  },
+  {
+    category: 'heavy-industry',
+    guid: 116_029,
+    icon: '/buildings/gold-ore.png',
+    name: 'Deep Gold Mine',
     region: 'arctic',
     tier: 'Technicians',
   },
@@ -892,6 +1028,14 @@ const arcticPublicServices: Array<Building> = [
     name: 'Post Office',
     region: 'arctic',
     tier: 'Technicians',
+  },
+  {
+    category: 'public-service',
+    guid: 114_751,
+    icon: '/buildings/heater.png',
+    name: 'Heater',
+    region: 'arctic',
+    tier: 'Explorers',
   },
 ]
 
@@ -935,6 +1079,22 @@ const enbesaFarms: Array<Building> = [
     guid: 114_754,
     icon: '/buildings/cotton.png',
     name: 'Cotton Farm',
+    region: 'enbesa',
+    tier: 'Elders',
+  },
+  {
+    category: 'farm',
+    guid: 114_439,
+    icon: '/buildings/sanga-cow.png',
+    name: 'Sanga Farm',
+    region: 'enbesa',
+    tier: 'Shepherds',
+  },
+  {
+    category: 'farm',
+    guid: 114_453,
+    icon: '/buildings/beeswax.png',
+    name: 'Apiary',
     region: 'enbesa',
     tier: 'Elders',
   },
@@ -1029,6 +1189,113 @@ const enbesaProduction: Array<Building> = [
     region: 'enbesa',
     tier: 'Shepherds',
   },
+  {
+    category: 'production',
+    guid: 114_440,
+    icon: '/buildings/salt.png',
+    name: 'Salt Works',
+    region: 'enbesa',
+    tier: 'Shepherds',
+  },
+  {
+    category: 'production',
+    guid: 114_441,
+    icon: '/buildings/linen.png',
+    name: 'Linen Mill',
+    region: 'enbesa',
+    tier: 'Shepherds',
+  },
+  {
+    category: 'production',
+    guid: 114_444,
+    icon: '/buildings/dried-meat.png',
+    name: 'Dry-House',
+    region: 'enbesa',
+    tier: 'Shepherds',
+  },
+  {
+    category: 'production',
+    guid: 114_466,
+    icon: '/buildings/finery.png',
+    name: 'Embroiderer',
+    region: 'enbesa',
+    tier: 'Shepherds',
+  },
+  {
+    category: 'production',
+    guid: 114_461,
+    icon: '/buildings/candles.png',
+    name: 'Chandler',
+    region: 'enbesa',
+    tier: 'Elders',
+  },
+  {
+    category: 'production',
+    guid: 114_464,
+    icon: '/buildings/lanterns.png',
+    name: 'Lanternsmith',
+    region: 'enbesa',
+    tier: 'Elders',
+  },
+  {
+    category: 'production',
+    guid: 114_468,
+    icon: '/buildings/hibiscus-tea.png',
+    name: 'Tea Spicer',
+    region: 'enbesa',
+    tier: 'Elders',
+  },
+  {
+    category: 'production',
+    guid: 114_472,
+    icon: '/buildings/clay-pipes.png',
+    name: 'Pipe Maker',
+    region: 'enbesa',
+    tier: 'Elders',
+  },
+  {
+    category: 'production',
+    guid: 114_471,
+    icon: '/buildings/wat-stew.png',
+    name: 'Wat Kitchen',
+    region: 'enbesa',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 118_725,
+    icon: '/buildings/ceramics.png',
+    name: 'Ceramics Workshop',
+    region: 'enbesa',
+    tier: 'Scholars',
+  },
+  {
+    category: 'production',
+    guid: 118_729,
+    icon: '/buildings/seafood.png',
+    name: 'Lobster Fishery',
+    region: 'enbesa',
+    tier: 'Scholars',
+  },
+]
+
+const enbesaHeavyIndustry: Array<Building> = [
+  {
+    category: 'heavy-industry',
+    guid: 114_467,
+    icon: '/buildings/mud-bricks.png',
+    name: 'Brick Dry-House',
+    region: 'enbesa',
+    tier: 'Elders',
+  },
+  {
+    category: 'heavy-industry',
+    guid: 117_744,
+    icon: '/buildings/paper.png',
+    name: 'Paper Mill',
+    region: 'enbesa',
+    tier: 'Scholars',
+  },
 ]
 
 const enbesaPublicServices: Array<Building> = [
@@ -1056,6 +1323,22 @@ const enbesaPublicServices: Array<Building> = [
     region: 'enbesa',
     tier: 'Shepherds',
   },
+  {
+    category: 'public-service',
+    guid: 114_519,
+    icon: '/buildings/musicians-court.png',
+    name: "Musicians' Court",
+    region: 'enbesa',
+    tier: 'Shepherds',
+  },
+  {
+    category: 'public-service',
+    guid: 114_520,
+    icon: '/buildings/monastery.png',
+    name: 'Monastery',
+    region: 'enbesa',
+    tier: 'Elders',
+  },
 ]
 
 // ── All Buildings ────────────────────────────────────────────────────
@@ -1073,5 +1356,6 @@ export const buildings: Array<Building> = [
   ...arcticPublicServices,
   ...enbesaFarms,
   ...enbesaProduction,
+  ...enbesaHeavyIndustry,
   ...enbesaPublicServices,
 ]
