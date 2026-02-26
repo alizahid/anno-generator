@@ -87,6 +87,13 @@ const oldWorldProduction: Array<Building> = [
   },
   {
     category: 'production',
+    guid: 1_010_559,
+    name: 'Fishery',
+    region: 'old-world',
+    tier: 'Farmers',
+  },
+  {
+    category: 'production',
     guid: 1_010_294,
     name: 'Schnapps Distillery',
     region: 'old-world',
@@ -220,6 +227,13 @@ const oldWorldProduction: Array<Building> = [
   },
   {
     category: 'production',
+    guid: 1_010_320,
+    name: 'Marquetry Workshop',
+    region: 'old-world',
+    tier: 'Investors',
+  },
+  {
+    category: 'production',
     guid: 1_010_326,
     name: 'Gramophone Factory',
     region: 'old-world',
@@ -229,6 +243,13 @@ const oldWorldProduction: Array<Building> = [
     category: 'production',
     guid: 1_010_328,
     name: 'Jewellers',
+    region: 'old-world',
+    tier: 'Investors',
+  },
+  {
+    category: 'production',
+    guid: 1_010_289,
+    name: 'Coachmakers',
     region: 'old-world',
     tier: 'Investors',
   },
@@ -437,7 +458,7 @@ const oldWorldPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 1_010_463,
-    name: 'Fire Department',
+    name: 'Fire Station',
     region: 'old-world',
     tier: 'Farmers',
   },
@@ -558,6 +579,13 @@ const newWorldFarms: Array<Building> = [
     region: 'new-world',
     tier: 'Obreros',
   },
+  {
+    category: 'farm',
+    guid: 101_272,
+    name: 'Alpaca Farm',
+    region: 'new-world',
+    tier: 'Obreros',
+  },
 ]
 
 const newWorldProduction: Array<Building> = [
@@ -593,6 +621,13 @@ const newWorldProduction: Array<Building> = [
     category: 'production',
     guid: 101_252,
     name: 'Coffee Roaster',
+    region: 'new-world',
+    tier: 'Obreros',
+  },
+  {
+    category: 'production',
+    guid: 101_415,
+    name: 'Felt Producer',
     region: 'new-world',
     tier: 'Obreros',
   },
@@ -786,7 +821,7 @@ const enbesaFarms: Array<Building> = [
   {
     category: 'farm',
     guid: 114_754,
-    name: 'Cotton Farm (Enbesa)',
+    name: 'Cotton Farm',
     region: 'enbesa',
     tier: 'Elders',
   },
@@ -859,7 +894,7 @@ const enbesaProduction: Array<Building> = [
   {
     category: 'production',
     guid: 114_764,
-    name: 'Flour Mill (Enbesa)',
+    name: 'Flour Mill',
     region: 'enbesa',
     tier: 'Shepherds',
   },
@@ -890,7 +925,7 @@ const enbesaPublicServices: Array<Building> = [
   {
     category: 'public-service',
     guid: 114_772,
-    name: 'Marketplace (Enbesa)',
+    name: 'Marketplace',
     region: 'enbesa',
     tier: 'Shepherds',
   },

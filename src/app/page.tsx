@@ -15,7 +15,6 @@ import {
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { GlobalTweaksSection } from '@/components/global-tweaks-section'
-import { ModPreview } from '@/components/mod-preview'
 import { ProductivitySection } from '@/components/productivity-section'
 import { RadiusSection } from '@/components/radius-section'
 import { generateModZip } from '@/lib/generate-zip'
@@ -26,8 +25,8 @@ export default function Home() {
     defaultValues: {
       enableAllFertilities: false,
       modName: 'My Custom Mod',
-      productivityTweaks: [],
-      radiusTweaks: [],
+      productivityMultipliers: {},
+      radiusMultipliers: {},
       removeTransferTime: false,
     },
     resolver: zodResolver(modConfigSchema),
@@ -95,8 +94,6 @@ export default function Home() {
               <GlobalTweaksSection />
 
               <Separator size="4" />
-
-              <ModPreview />
 
               <Flex justify="center" py="4">
                 <Button

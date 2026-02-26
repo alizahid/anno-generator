@@ -58,19 +58,12 @@ export type Fertility = {
 
 // ── Mod config (form state) ──────────────────────────────────────────
 
-export const tweakSchema = z.object({
-  buildingGuid: z.number(),
-  buildingName: z.string(),
-  multiplier: z.number().min(1).max(10),
-})
-
 export const modConfigSchema = z.object({
   enableAllFertilities: z.boolean(),
   modName: z.string().min(1),
-  productivityTweaks: z.array(tweakSchema),
-  radiusTweaks: z.array(tweakSchema),
+  productivityMultipliers: z.record(z.string(), z.number().optional()),
+  radiusMultipliers: z.record(z.string(), z.number().optional()),
   removeTransferTime: z.boolean(),
 })
 
-export type Tweak = z.infer<typeof tweakSchema>
 export type ModConfig = z.infer<typeof modConfigSchema>

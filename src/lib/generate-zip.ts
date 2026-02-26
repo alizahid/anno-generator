@@ -3,6 +3,12 @@ import JSZip from 'jszip'
 import { generateAssetsXml } from './generate-mod'
 import { type ModConfig } from './types'
 
+function countActiveMultipliers(
+  multipliers: Record<string, number | undefined>,
+) {
+  return Object.values(multipliers).filter((m) => m != null && m > 1).length
+}
+
 export async function generateModZip(config: ModConfig) {
   const zip = new JSZip()
 
@@ -27,14 +33,18 @@ export async function generateModZip(config: ModConfig) {
 function generateModinfoJson(config: ModConfig) {
   const features: Array<string> = []
 
-  if (config.productivityTweaks.length > 0) {
-    features.push(
-      `Productivity tweaks for ${config.productivityTweaks.length} building(s)`,
-    )
+  const productivityCount = countActiveMultipliers(
+    config.productivityMultipliers,
+  )
+  if (productivityCount > 0) {
+    features.push(`Productivity tweaks for ${productivityCount} building(s)`)
   }
-  if (config.radiusTweaks.length > 0) {
-    features.push(`Radius tweaks for ${config.radiusTweaks.length} building(s)`)
+
+  const radiusCount = countActiveMultipliers(config.radiusMultipliers)
+  if (radiusCount > 0) {
+    features.push(`Radius tweaks for ${radiusCount} building(s)`)
   }
+
   if (config.enableAllFertilities) {
     features.push('All fertilities enabled')
   }

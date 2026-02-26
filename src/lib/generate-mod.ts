@@ -1,49 +1,65 @@
 import { create } from 'xmlbuilder2'
 
+import { buildings } from '@/data/buildings'
 import { fertilities } from '@/data/fertilities'
 
 import { type ModConfig } from './types'
 
 type XmlNode = ReturnType<typeof create>
 
+function getActiveMultipliers(multipliers: Record<string, number | undefined>) {
+  return Object.entries(multipliers)
+    .filter(([, m]) => m != null && m > 1)
+    .map(([guid, multiplier]) => ({
+      guid,
+      multiplier: multiplier!,
+      name:
+        buildings.find((b) => b.guid === Number(guid))?.name ??
+        `Building ${guid}`,
+    }))
+}
+
 function addProductivityOps(
   root: XmlNode,
-  tweaks: ModConfig['productivityTweaks'],
+  multipliers: ModConfig['productivityMultipliers'],
 ) {
-  for (const tweak of tweaks) {
+  for (const { guid, multiplier, name } of getActiveMultipliers(multipliers)) {
     root
-      .com(` ${tweak.buildingName} - Productivity x${tweak.multiplier} `)
+      .com(` ${name} - Productivity x${multiplier} `)
       .ele('ModOp', {
-        GUID: String(tweak.buildingGuid),
+        GUID: guid,
         Path: '/Values/FactoryBase/CycleTime',
         Type: 'merge',
       })
       .ele('CycleTime')
-      .txt(String(Math.round(30 / tweak.multiplier)))
+      .txt(String(Math.round(30 / multiplier)))
   }
 }
 
-function addRadiusOps(root: XmlNode, tweaks: ModConfig['radiusTweaks']) {
-  for (const tweak of tweaks) {
-    root.com(` ${tweak.buildingName} - Radius x${tweak.multiplier} `)
+function addRadiusOps(
+  root: XmlNode,
+  multipliers: ModConfig['radiusMultipliers'],
+) {
+  for (const { guid, multiplier, name } of getActiveMultipliers(multipliers)) {
+    root.com(` ${name} - Radius x${multiplier} `)
 
     root
       .ele('ModOp', {
-        GUID: String(tweak.buildingGuid),
+        GUID: guid,
         Path: '/Values/PublicService/FullSatisfactionDistance',
         Type: 'merge',
       })
       .ele('FullSatisfactionDistance')
-      .txt(String(Math.round(30 * tweak.multiplier)))
+      .txt(String(Math.round(30 * multiplier)))
 
     root
       .ele('ModOp', {
-        GUID: String(tweak.buildingGuid),
+        GUID: guid,
         Path: '/Values/PublicService/NoSatisfactionDistance',
         Type: 'merge',
       })
       .ele('NoSatisfactionDistance')
-      .txt(String(Math.round(50 * tweak.multiplier)))
+      .txt(String(Math.round(50 * multiplier)))
   }
 }
 
@@ -102,12 +118,16 @@ export function generateAssetsXml(config: ModConfig) {
   const doc = create({ encoding: 'UTF-8', version: '1.0' })
   const root = doc.ele('ModOps')
 
-  if (config.productivityTweaks.length > 0) {
-    addProductivityOps(root, config.productivityTweaks)
+  const hasProductivity =
+    getActiveMultipliers(config.productivityMultipliers).length > 0
+  const hasRadius = getActiveMultipliers(config.radiusMultipliers).length > 0
+
+  if (hasProductivity) {
+    addProductivityOps(root, config.productivityMultipliers)
   }
 
-  if (config.radiusTweaks.length > 0) {
-    addRadiusOps(root, config.radiusTweaks)
+  if (hasRadius) {
+    addRadiusOps(root, config.radiusMultipliers)
   }
 
   if (config.enableAllFertilities) {
