@@ -1,133 +1,122 @@
-import { fertilities } from "@/data/fertilities";
-import type { ModConfig } from "./types";
+import { create } from 'xmlbuilder2'
 
-function escapeXml(text: string): string {
-	return text
-		.replace(/&/g, "&amp;")
-		.replace(/</g, "&lt;")
-		.replace(/>/g, "&gt;")
-		.replace(/"/g, "&quot;")
-		.replace(/'/g, "&apos;");
+import { fertilities } from '@/data/fertilities'
+
+import { type ModConfig } from './types'
+
+type XmlNode = ReturnType<typeof create>
+
+function addProductivityOps(
+  root: XmlNode,
+  tweaks: ModConfig['productivityTweaks'],
+) {
+  for (const tweak of tweaks) {
+    root
+      .com(` ${tweak.buildingName} - Productivity x${tweak.multiplier} `)
+      .ele('ModOp', {
+        GUID: String(tweak.buildingGuid),
+        Path: '/Values/FactoryBase/CycleTime',
+        Type: 'merge',
+      })
+      .ele('CycleTime')
+      .txt(String(Math.round(30 / tweak.multiplier)))
+  }
 }
 
-function generateProductivityXml(
-	tweaks: ModConfig["productivityTweaks"],
-): string {
-	if (tweaks.length === 0) {
-		return "";
-	}
+function addRadiusOps(root: XmlNode, tweaks: ModConfig['radiusTweaks']) {
+  for (const tweak of tweaks) {
+    root.com(` ${tweak.buildingName} - Radius x${tweak.multiplier} `)
 
-	return tweaks
-		.map(
-			(tweak) => `
-  <!-- ${escapeXml(tweak.buildingName)} - Productivity x${tweak.multiplier} -->
-  <ModOp Type="merge" GUID="${tweak.buildingGuid}" Path="/Values/FactoryBase/CycleTime">
-    <CycleTime>${Math.round(30 / tweak.multiplier)}</CycleTime>
-  </ModOp>`,
-		)
-		.join("\n");
+    root
+      .ele('ModOp', {
+        GUID: String(tweak.buildingGuid),
+        Path: '/Values/PublicService/FullSatisfactionDistance',
+        Type: 'merge',
+      })
+      .ele('FullSatisfactionDistance')
+      .txt(String(Math.round(30 * tweak.multiplier)))
+
+    root
+      .ele('ModOp', {
+        GUID: String(tweak.buildingGuid),
+        Path: '/Values/PublicService/NoSatisfactionDistance',
+        Type: 'merge',
+      })
+      .ele('NoSatisfactionDistance')
+      .txt(String(Math.round(50 * tweak.multiplier)))
+  }
 }
 
-function generateRadiusXml(tweaks: ModConfig["radiusTweaks"]): string {
-	if (tweaks.length === 0) {
-		return "";
-	}
+function addFertilityOps(root: XmlNode) {
+  const oldWorldFertilities = fertilities.filter(
+    (f) => f.region === 'old-world',
+  )
+  const newWorldFertilities = fertilities.filter(
+    (f) => f.region === 'new-world',
+  )
+  const enbesaFertilities = fertilities.filter((f) => f.region === 'enbesa')
 
-	return tweaks
-		.map(
-			(tweak) => `
-  <!-- ${escapeXml(tweak.buildingName)} - Radius x${tweak.multiplier} -->
-  <ModOp Type="merge" GUID="${tweak.buildingGuid}" Path="/Values/PublicService/FullSatisfactionDistance">
-    <FullSatisfactionDistance>${Math.round(30 * tweak.multiplier)}</FullSatisfactionDistance>
-  </ModOp>
-  <ModOp Type="merge" GUID="${tweak.buildingGuid}" Path="/Values/PublicService/NoSatisfactionDistance">
-    <NoSatisfactionDistance>${Math.round(50 * tweak.multiplier)}</NoSatisfactionDistance>
-  </ModOp>`,
-		)
-		.join("\n");
+  const addFertilityPool = (
+    sessionGuid: string,
+    sessionName: string,
+    items: typeof fertilities,
+  ) => {
+    root.com(` Enable All Fertilities - ${sessionName} `)
+
+    const modOp = root.ele('ModOp', {
+      GUID: sessionGuid,
+      Path: '/Values/SessionRandomManager/FertilityPool',
+      Type: 'add',
+    })
+
+    for (const f of items) {
+      const item = modOp.ele('Item')
+      item.ele('FertilityGuid').txt(String(f.guid))
+      item.ele('Weight').txt('100')
+    }
+  }
+
+  addFertilityPool('180023', 'Old World', oldWorldFertilities)
+  addFertilityPool('180025', 'New World', newWorldFertilities)
+  addFertilityPool('180045', 'Enbesa', enbesaFertilities)
 }
 
-function generateFertilityXml(): string {
-	// To enable all fertilities, we add all fertility GUIDs to every Old World
-	// and New World island session template. We use the IslandFertility pool approach.
-	const oldWorldFertilities = fertilities.filter(
-		(f) => f.region === "old-world" || f.region === "both",
-	);
-	const newWorldFertilities = fertilities.filter(
-		(f) => f.region === "new-world" || f.region === "both",
-	);
+function addTransferTimeOps(root: XmlNode) {
+  root.com(' Remove Transfer Time between Sessions ')
 
-	const fertilityItems = (items: typeof fertilities) =>
-		items
-			.map((f) => `          <Item><Fertility>${f.guid}</Fertility></Item>`)
-			.join("\n");
+  const transferGuids = ['130248', '130249', '130250', '130251', '130252']
 
-	return `
-  <!-- Enable All Fertilities - Old World -->
-  <ModOp Type="addNextSibling" GUID="190764" Path="/Values/Fertility">
-    <Fertility>
-      <GrantedFertilities>
-${fertilityItems(oldWorldFertilities)}
-      </GrantedFertilities>
-    </Fertility>
-  </ModOp>
-
-  <!-- Enable All Fertilities - Use RandomPool approach for sessions -->
-  <!-- Old World Session (180023) - Replace fertility pools to include all -->
-  <ModOp Type="add" GUID="180023" Path="/Values/SessionRandomManager/FertilityPool">
-${oldWorldFertilities.map((f) => `    <Item><FertilityGuid>${f.guid}</FertilityGuid><Weight>100</Weight></Item>`).join("\n")}
-  </ModOp>
-
-  <!-- New World Session (180025) - Replace fertility pools to include all -->
-  <ModOp Type="add" GUID="180025" Path="/Values/SessionRandomManager/FertilityPool">
-${newWorldFertilities.map((f) => `    <Item><FertilityGuid>${f.guid}</FertilityGuid><Weight>100</Weight></Item>`).join("\n")}
-  </ModOp>`;
+  for (const guid of transferGuids) {
+    root
+      .ele('ModOp', {
+        GUID: guid,
+        Path: '/Values/WorldTransfer/TransferTime',
+        Type: 'merge',
+      })
+      .ele('TransferTime')
+      .txt('0')
+  }
 }
 
-function generateTransferTimeXml(): string {
-	return `
-  <!-- Remove Transfer Time between Sessions -->
-  <!-- Set ship transfer time to 0 for all trade routes -->
-  <ModOp Type="merge" GUID="130248" Path="/Values/WorldTransfer/TransferTime">
-    <TransferTime>0</TransferTime>
-  </ModOp>
-  <ModOp Type="merge" GUID="130249" Path="/Values/WorldTransfer/TransferTime">
-    <TransferTime>0</TransferTime>
-  </ModOp>
-  <ModOp Type="merge" GUID="130250" Path="/Values/WorldTransfer/TransferTime">
-    <TransferTime>0</TransferTime>
-  </ModOp>
-  <ModOp Type="merge" GUID="130251" Path="/Values/WorldTransfer/TransferTime">
-    <TransferTime>0</TransferTime>
-  </ModOp>
-  <ModOp Type="merge" GUID="130252" Path="/Values/WorldTransfer/TransferTime">
-    <TransferTime>0</TransferTime>
-  </ModOp>`;
-}
+export function generateAssetsXml(config: ModConfig) {
+  const doc = create({ encoding: 'UTF-8', version: '1.0' })
+  const root = doc.ele('ModOps')
 
-export function generateAssetsXml(config: ModConfig): string {
-	const sections: string[] = [];
+  if (config.productivityTweaks.length > 0) {
+    addProductivityOps(root, config.productivityTweaks)
+  }
 
-	const productivityXml = generateProductivityXml(config.productivityTweaks);
-	if (productivityXml) {
-		sections.push(productivityXml);
-	}
+  if (config.radiusTweaks.length > 0) {
+    addRadiusOps(root, config.radiusTweaks)
+  }
 
-	const radiusXml = generateRadiusXml(config.radiusTweaks);
-	if (radiusXml) {
-		sections.push(radiusXml);
-	}
+  if (config.enableAllFertilities) {
+    addFertilityOps(root)
+  }
 
-	if (config.enableAllFertilities) {
-		sections.push(generateFertilityXml());
-	}
+  if (config.removeTransferTime) {
+    addTransferTimeOps(root)
+  }
 
-	if (config.removeTransferTime) {
-		sections.push(generateTransferTimeXml());
-	}
-
-	return `<ModOps>
-${sections.join("\n")}
-</ModOps>
-`;
+  return doc.end({ indent: '  ', prettyPrint: true })
 }
