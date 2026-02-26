@@ -1,15 +1,12 @@
 'use client'
 
 import { Card, Flex, Heading, Switch, Text } from '@radix-ui/themes'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 
 import { type ModConfig } from '@/lib/types'
 
 export function GlobalTweaksSection() {
-  const { setValue, watch } = useFormContext<ModConfig>()
-
-  const enableAllFertilities = watch('enableAllFertilities')
-  const removeTransferTime = watch('removeTransferTime')
+  const { control } = useFormContext<ModConfig>()
 
   return (
     <Card size="3">
@@ -32,12 +29,12 @@ export function GlobalTweaksSection() {
                 sessions
               </Text>
             </Flex>
-            <Switch
-              checked={enableAllFertilities}
-              onCheckedChange={(checked) =>
-                setValue('enableAllFertilities', checked)
-              }
-              size="3"
+            <Controller
+              control={control}
+              name="enableAllFertilities"
+              render={({ field: { onChange, value } }) => (
+                <Switch checked={value} onCheckedChange={onChange} size="3" />
+              )}
             />
           </Flex>
         </Card>
@@ -53,12 +50,12 @@ export function GlobalTweaksSection() {
                 etc.) instantly with no travel time
               </Text>
             </Flex>
-            <Switch
-              checked={removeTransferTime}
-              onCheckedChange={(checked) =>
-                setValue('removeTransferTime', checked)
-              }
-              size="3"
+            <Controller
+              control={control}
+              name="removeTransferTime"
+              render={({ field: { onChange, value } }) => (
+                <Switch checked={value} onCheckedChange={onChange} size="3" />
+              )}
             />
           </Flex>
         </Card>

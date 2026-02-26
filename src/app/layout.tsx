@@ -1,6 +1,7 @@
+import './globals.css'
+
 import { Theme } from '@radix-ui/themes'
 import { type Metadata } from 'next'
-import './globals.css'
 
 export const metadata: Metadata = {
   description:

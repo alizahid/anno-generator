@@ -9,18 +9,18 @@ import {
   ScrollArea,
   Text,
 } from '@radix-ui/themes'
-import { useFormContext } from 'react-hook-form'
+import { useFormContext, useWatch } from 'react-hook-form'
 
 import { generateAssetsXml } from '@/lib/generate-mod'
 import { type ModConfig } from '@/lib/types'
 
 export function ModPreview() {
-  const { watch } = useFormContext<ModConfig>()
-  const config = watch()
+  const { control } = useFormContext<ModConfig>()
+  const config = useWatch({ control })
 
   const hasContent =
-    config.productivityTweaks.length > 0 ||
-    config.radiusTweaks.length > 0 ||
+    (config.productivityTweaks?.length ?? 0) > 0 ||
+    (config.radiusTweaks?.length ?? 0) > 0 ||
     config.enableAllFertilities ||
     config.removeTransferTime
 
@@ -28,7 +28,7 @@ export function ModPreview() {
     return null
   }
 
-  const xml = generateAssetsXml(config)
+  const xml = generateAssetsXml(config as ModConfig)
 
   return (
     <Card size="3">

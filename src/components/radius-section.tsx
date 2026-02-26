@@ -12,7 +12,7 @@ import {
   Slider,
   Text,
 } from '@radix-ui/themes'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
 
 import { buildings } from '@/data/buildings'
 import { type ModConfig } from '@/lib/types'
@@ -22,11 +22,14 @@ import { RemoveIcon } from './remove-icon'
 const radiusBuildings = buildings.filter((b) => b.category === 'public-service')
 
 export function RadiusSection() {
-  const { getValues, setValue, watch } = useFormContext<ModConfig>()
-  const tweaks = watch('radiusTweaks')
+  const { control } = useFormContext<ModConfig>()
+  const { append, fields, remove } = useFieldArray({
+    control,
+    name: 'radiusTweaks',
+  })
 
   const availableBuildings = radiusBuildings.filter(
-    (b) => !tweaks.some((t) => t.buildingGuid === b.guid),
+    (b) => !fields.some((f) => f.buildingGuid === b.guid),
   )
 
   const addTweak = (guidStr: string) => {
@@ -37,26 +40,7 @@ export function RadiusSection() {
       return
     }
 
-    setValue('radiusTweaks', [
-      ...getValues('radiusTweaks'),
-      { buildingGuid: guid, buildingName: building.name, multiplier: 2 },
-    ])
-  }
-
-  const removeTweak = (guid: number) => {
-    setValue(
-      'radiusTweaks',
-      getValues('radiusTweaks').filter((t) => t.buildingGuid !== guid),
-    )
-  }
-
-  const updateMultiplier = (guid: number, multiplier: number) => {
-    setValue(
-      'radiusTweaks',
-      getValues('radiusTweaks').map((t) =>
-        t.buildingGuid === guid ? { ...t, multiplier } : t,
-      ),
-    )
+    append({ buildingGuid: guid, buildingName: building.name, multiplier: 2 })
   }
 
   return (
@@ -69,46 +53,50 @@ export function RadiusSection() {
               Increase the influence radius of public service buildings
             </Text>
           </Flex>
-          {tweaks.length > 0 && (
+          {fields.length > 0 && (
             <Badge color="amber" size="2">
-              {tweaks.length} building{tweaks.length !== 1 ? 's' : ''}
+              {fields.length} building{fields.length !== 1 ? 's' : ''}
             </Badge>
           )}
         </Flex>
 
-        {tweaks.map((tweak) => (
-          <Card key={tweak.buildingGuid} variant="surface">
+        {fields.map((field, index) => (
+          <Card key={field.id} variant="surface">
             <Flex direction="column" gap="3">
               <Flex align="center" justify="between">
                 <Text size="2" weight="medium">
-                  {tweak.buildingName}
+                  {field.buildingName}
                 </Text>
                 <IconButton
-                  aria-label={`Remove ${tweak.buildingName}`}
+                  aria-label={`Remove ${field.buildingName}`}
                   color="red"
-                  onClick={() => removeTweak(tweak.buildingGuid)}
+                  onClick={() => remove(index)}
                   size="1"
                   variant="ghost"
                 >
                   <RemoveIcon />
                 </IconButton>
               </Flex>
-              <Flex align="center" gap="3">
-                <Box flexGrow="1">
-                  <Slider
-                    max={10}
-                    min={1}
-                    onValueChange={([value]) =>
-                      updateMultiplier(tweak.buildingGuid, value)
-                    }
-                    step={0.5}
-                    value={[tweak.multiplier]}
-                  />
-                </Box>
-                <Badge size="2" style={{ minWidth: 48 }} variant="surface">
-                  {tweak.multiplier}x
-                </Badge>
-              </Flex>
+              <Controller
+                control={control}
+                name={`radiusTweaks.${index}.multiplier`}
+                render={({ field: { onChange, value } }) => (
+                  <Flex align="center" gap="3">
+                    <Box flexGrow="1">
+                      <Slider
+                        max={10}
+                        min={1}
+                        onValueChange={([next]) => onChange(next)}
+                        step={0.5}
+                        value={[value]}
+                      />
+                    </Box>
+                    <Badge size="2" style={{ minWidth: 48 }} variant="surface">
+                      {value}x
+                    </Badge>
+                  </Flex>
+                )}
+              />
             </Flex>
           </Card>
         ))}
@@ -151,11 +139,11 @@ export function RadiusSection() {
           </Select.Root>
         )}
 
-        {tweaks.length > 0 && (
+        {fields.length > 0 && (
           <Flex justify="end">
             <Button
               color="red"
-              onClick={() => setValue('radiusTweaks', [])}
+              onClick={() => remove()}
               size="1"
               variant="ghost"
             >
